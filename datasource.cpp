@@ -12,16 +12,19 @@ DataSource::DataSource() {
 }
 
 DataSource::~DataSource() {
+    delete proxyModel;
     delete model;
 }
 
-QStandardItemModel * DataSource::GetModel(){
-    return model;
+ProxyModel * DataSource::GetModel(){
+    return proxyModel;
 }
 
 void DataSource::InitializeModel()
 {
     model = new QStandardItemModel();
+    proxyModel = new ProxyModel();
+    proxyModel->setSourceModel(model);
 
     QStringList *columns = new QStringList();
     columns->append("ФИО");
@@ -105,6 +108,7 @@ void DataSource::DeleteRow(QModelIndexList indexes)
         indexes.removeLast();
     }
     Save();
+    emit rowsCountChanged();
 }
 
 void DataSource::AddRow(QString fio, QString phone, QString year, QString balance)
@@ -116,6 +120,7 @@ void DataSource::AddRow(QString fio, QString phone, QString year, QString balanc
     row.append(new QStandardItem(balance));
     model->appendRow(row);
     Save();
+    emit rowsCountChanged();
 }
 
 QFile * DataSource::OpenFile(bool overwrite) {
@@ -128,3 +133,17 @@ QFile * DataSource::OpenFile(bool overwrite) {
     return file;
 }
 
+void DataSource::filterByYear(QString year) {
+    proxyModel->setYearFilter(year);
+    emit rowsCountChanged();
+}
+
+void DataSource::filterByName(QString name) {
+    proxyModel->setNameFilter(name);
+    emit rowsCountChanged();
+}
+
+void DataSource::showNegativeOnly(bool negativeOnly){
+    proxyModel->setNegativeBalanceOnly(negativeOnly);
+    emit rowsCountChanged();
+}

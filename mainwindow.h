@@ -22,6 +22,7 @@ public:
     ~MainWindow();
     void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
     void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QList<int> &roles = QList<int>());
+    void updateRoesCount();
 
 private slots:
     void on_buttonDel_clicked();
@@ -29,6 +30,14 @@ private slots:
     void on_buttonAdd_clicked();
 
     void on_buttonReset_clicked();
+
+    void on_fioFilterButton_clicked();
+
+    void on_clearFilterButton_clicked();
+
+    void on_yearFilterButton_clicked();
+
+    void on_negativeFilterButton_clicked();
 
 private:
     Ui::MainWindow *ui;

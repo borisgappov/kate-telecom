@@ -4,9 +4,14 @@
 #include <QStandardItemModel>
 #include <QFile>
 #include <QFileInfo>
+#include "proxymodel.h"
 
-class DataSource
-{   
+QT_BEGIN_NAMESPACE
+
+class DataSource : public QObject
+{
+    Q_OBJECT
+
 public:
     static const QString dataFile;
     static const QString lineTemplate;
@@ -14,7 +19,7 @@ public:
     DataSource();
     ~DataSource();
 
-    QStandardItemModel * GetModel();
+    ProxyModel * GetModel();
 
     void Load();
 
@@ -26,8 +31,18 @@ public:
 
     void AddRow(QString fio, QString phone, QString year, QString balance);
 
+    void filterByYear(QString year);
+
+    void filterByName(QString name);
+
+    void showNegativeOnly(bool negativeOnly);
+
+Q_SIGNAL
+    void rowsCountChanged();
+
 private:
     QStandardItemModel * model;
+    ProxyModel * proxyModel;
 
     bool skipSave;
 
@@ -36,4 +51,7 @@ private:
     QFile * OpenFile(bool overwrite = false);
 };
 
+QT_END_NAMESPACE
+
 #endif // DATASOURCE_H
+

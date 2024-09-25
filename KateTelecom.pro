@@ -13,12 +13,14 @@ SOURCES += \
     datasource.cpp \
     itemdialod.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    proxymodel.cpp
 
 HEADERS += \
     datasource.h \
     itemdialod.h \
-    mainwindow.h
+    mainwindow.h \
+    proxymodel.h
 
 FORMS += \
     itemdialod.ui \

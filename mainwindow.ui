@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>541</width>
-    <height>385</height>
+    <height>538</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>10</x>
       <y>40</y>
       <width>521</width>
-      <height>301</height>
+      <height>271</height>
      </rect>
     </property>
     <property name="selectionMode">
@@ -73,6 +73,120 @@
     </property>
     <property name="text">
      <string>Ресет</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="fioFilterButton">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>350</y>
+      <width>341</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>1) Определить все номера телефона абонента, и их баланс</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="fioFilterEdit">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>350</y>
+      <width>171</width>
+      <height>24</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="clearFilterButton">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>440</y>
+      <width>111</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Очистить фильтр</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="yearFilterEdit">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>380</y>
+      <width>171</width>
+      <height>24</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="yearFilterButton">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>380</y>
+      <width>341</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>2) Показать абонентов, подключенных в заданном году      </string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="negativeFilterButton">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>410</y>
+      <width>341</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>3) Показать абонентов с отрицательным балансом              </string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="chartrButton">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>470</y>
+      <width>341</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>4) График количества номеров по годам                                </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>294</x>
+      <y>324</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Количество записей:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="recordsCountEdit">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>320</y>
+      <width>110</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>

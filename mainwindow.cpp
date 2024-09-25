@@ -26,6 +26,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &MainWindow::selectionChanged);
     connect(dataSource->GetModel(), &QStandardItemModel::dataChanged, this, &MainWindow::dataChanged);
+    connect(dataSource, &DataSource::rowsCountChanged, this, &MainWindow::updateRoesCount);
+
+    updateRoesCount();
 }
 
 MainWindow::~MainWindow()
@@ -63,4 +66,33 @@ void MainWindow::on_buttonReset_clicked()
 {
     dataSource->Seed();
     dataSource->Load();
+    updateRoesCount();
+}
+
+void MainWindow::on_fioFilterButton_clicked()
+{
+    dataSource->filterByName(ui->fioFilterEdit->text());
+}
+
+void MainWindow::on_yearFilterButton_clicked()
+{
+    dataSource->filterByYear(ui->yearFilterEdit->text());
+}
+
+void MainWindow::on_negativeFilterButton_clicked()
+{
+    dataSource->showNegativeOnly(true);
+}
+
+void MainWindow::on_clearFilterButton_clicked()
+{
+    dataSource->filterByName("");
+    dataSource->filterByYear("");
+    dataSource->showNegativeOnly(false);
+    ui->fioFilterEdit->setText("");
+    ui->yearFilterEdit->setText("");
+}
+
+void MainWindow::updateRoesCount(){
+    ui->recordsCountEdit->setText(QString("%1").arg(dataSource->GetModel()->rowCount()));
 }
